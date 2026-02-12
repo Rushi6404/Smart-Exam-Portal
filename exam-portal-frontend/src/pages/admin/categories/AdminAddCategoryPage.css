@@ -1,0 +1,20 @@
+.adminAddCategoryPage__container {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+
+.adminAddCategoryPage__sidebar {
+    flex: 0 0 250px;
+    /* Fixed width for sidebar */
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.adminAddCategoryPage__content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}

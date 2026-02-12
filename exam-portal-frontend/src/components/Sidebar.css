@@ -1,0 +1,109 @@
+main {
+    width: 100%;
+    padding: 0px;
+}
+
+.sidebar {
+    background: #0f172a;
+    /* Slate 900 - Darker premium sidebar */
+    color: #e2e8f0;
+    height: 100vh;
+    transition: all 0.5s;
+    position: sticky;
+    top: 0;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    font-family: 'Inter', sans-serif;
+    z-index: 1000;
+    border: none;
+    backdrop-filter: none;
+}
+
+.top_section {
+    display: flex;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+    background: transparent;
+    box-shadow: none;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #fff;
+    background: none;
+    -webkit-text-fill-color: initial;
+    text-shadow: none;
+    text-transform: none;
+}
+
+.bars {
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-left: auto;
+    color: #94a3b8;
+    transition: color 0.2s;
+}
+
+.bars:hover {
+    color: #fff;
+    text-shadow: none;
+}
+
+.sidemenulink {
+    display: flex;
+    color: #94a3b8;
+    /* Muted text */
+    padding: 12px 24px;
+    gap: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+    align-items: center;
+    border-left: 3px solid transparent;
+    margin: 0;
+    /* Reset margins */
+    border-radius: 0;
+}
+
+.sidemenulink:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-left: 3px solid rgba(255, 255, 255, 0.5);
+    transform: none;
+    /* No slide */
+    padding-left: 24px;
+    box-shadow: none;
+}
+
+.sidemenulink:hover .icon {
+    color: inherit;
+    transform: none;
+    text-shadow: none;
+}
+
+.active {
+    background: rgba(37, 99, 235, 0.15);
+    /* Primary color low opacity */
+    color: #60a5fa !important;
+    /* Lighter primary for text */
+    border-left: 3px solid #3b82f6;
+    /* Primary border */
+    box-shadow: none;
+}
+
+.active .icon {
+    color: inherit;
+    filter: none;
+}
+
+.icon {
+    font-size: 1.25rem;
+    display: flex;
+}
+
+.link_text {
+    font-weight: 600;
+    font-size: 1rem;
+}

@@ -1,0 +1,26 @@
+.adminQuestionsPage__container {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f6fa;
+}
+
+.adminQuestionsPage__sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 100;
+}
+
+.adminQuestionsPage__content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.question-card {
+    transition: all 0.2s ease;
+    border-radius: 12px;
+}
+
+.question-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08) !important;
+}
