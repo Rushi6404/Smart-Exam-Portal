@@ -6,6 +6,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 
@@ -17,9 +18,15 @@ public class ExamPortalBackendApplication {
 	}
 
 	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
+
+	@Bean
 	public ApplicationRunner initializer(RoleRepository roleRepository) {
 		return args -> roleRepository.saveAll(Arrays.asList(
 				Role.builder().roleName("USER").roleDescription("Default Role provided to each user").build(),
-				Role.builder().roleName("ADMIN").roleDescription("Superuser, who has access for all functionality").build()));
+				Role.builder().roleName("ADMIN").roleDescription("Superuser, who has access for all functionality")
+						.build()));
 	}
 }

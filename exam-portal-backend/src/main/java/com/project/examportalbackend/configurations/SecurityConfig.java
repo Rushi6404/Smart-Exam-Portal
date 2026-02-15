@@ -79,6 +79,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // Persistent Exam State
                 .antMatchers("/api/progress/**").hasAnyAuthority("USER", "ADMIN")
 
+                // Proctoring Logs
+                .antMatchers("/api/proctoring/**").hasAnyAuthority("USER", "ADMIN")
+
                 .anyRequest().denyAll()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

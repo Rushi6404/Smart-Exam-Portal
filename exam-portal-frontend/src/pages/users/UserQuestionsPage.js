@@ -369,7 +369,7 @@ const UserQuestionsPage = () => {
             <div className="bg-black d-flex justify-content-center align-items-center position-relative" style={{ height: "200px" }}>
               <div className="text-white position-absolute top-0 start-0 m-2 px-2 py-0 bg-danger rounded small" style={{ zIndex: 5, fontSize: "0.7rem", opacity: 0.9 }}>REC</div>
               <div style={{ width: "100%", height: "100%" }}>
-                <ProctoringMonitor quizId={quizId} userId={userId} onTabSwitch={handleTabViolation} />
+                <ProctoringMonitor quizId={quizId} userId={userId} token={token} onTabSwitch={handleTabViolation} />
               </div>
             </div>
           </div>

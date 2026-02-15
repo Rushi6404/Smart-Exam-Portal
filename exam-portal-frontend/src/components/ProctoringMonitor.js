@@ -4,7 +4,7 @@ import * as faceapi from "@vladmandic/face-api";
 import axios from "axios";
 import swal from "sweetalert";
 
-const ProctoringMonitor = ({ quizId, userId, onTabSwitch }) => {
+const ProctoringMonitor = ({ quizId, userId, token, onTabSwitch }) => {
     const webcamRef = useRef(null);
     const [warningMsg, setWarningMsg] = useState("");
     const callbackRef = useRef(onTabSwitch);
@@ -20,11 +20,14 @@ const ProctoringMonitor = ({ quizId, userId, onTabSwitch }) => {
 
     const logViolation = async (type) => {
         try {
-            await axios.post("http://localhost:8080/api/proctoring/log", {
+            const config = {
+                headers: { Authorization: `Bearer ${token}` }
+            };
+            await axios.post("/api/proctoring/log", {
                 userId: userId,
                 quizId: quizId,
                 violationType: type,
-            });
+            }, config);
         } catch (error) {
             console.error("Error logging violation", error);
         }

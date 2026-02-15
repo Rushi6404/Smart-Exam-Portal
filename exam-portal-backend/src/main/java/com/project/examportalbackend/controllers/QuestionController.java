@@ -14,7 +14,7 @@ import com.project.examportalbackend.services.implementation.AzureDocumentIntell
 import java.io.IOException;
 
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -40,7 +40,7 @@ public class QuestionController {
 
             Quiz quiz = quizService.getQuiz(quizId);
             if (quiz == null)
-                return ResponseEntity.badRequest().body("Quiz not found");
+                return ResponseEntity.badRequest().body(Map.of("message", "Quiz not found"));
 
             List<Question> generated = aiService.generateQuestions(topic, count, difficulty, quiz);
 
@@ -52,7 +52,8 @@ public class QuestionController {
             return ResponseEntity.ok(generated);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "AI Generation Error: " + e.getMessage()));
         }
     }
 
@@ -90,6 +91,17 @@ public class QuestionController {
 
     @Autowired
     private AzureDocumentIntelligenceService azureService;
+
+    @GetMapping("/test-gemini")
+    public ResponseEntity<?> testGemini() {
+        try {
+            List<Question> test = aiService.generateQuestions("Java", 1, "Easy", null);
+            return ResponseEntity.ok(Map.of("status", "success", "sample", test.get(0)));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("status", "error", "message", e.getMessage()));
+        }
+    }
 
     @PostMapping("/auto-generate")
     public ResponseEntity<?> autoGenerateQuestions(@RequestParam("file") MultipartFile file,
